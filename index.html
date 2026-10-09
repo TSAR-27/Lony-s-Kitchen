@@ -18,7 +18,7 @@ nav{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));left:50%;transf
 nav div a{color:var(--ink);text-decoration:none;font-size:.9rem;margin-left:18px;transition:.2s}nav div a:hover{color:var(--r)}
 nav .pill{background:var(--r);color:#fff;padding:8px 18px;border-radius:99px;font-weight:600}nav .pill:hover{color:#fff;background:var(--r2)}
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 6vw 70px;position:relative;overflow:hidden;color:#fff;background:radial-gradient(70% 60% at 20% 0%,#2f8f66,transparent 70%),radial-gradient(60% 60% at 90% 100%,#0a2e22,transparent 70%),linear-gradient(160deg,#1f7a53,#0f4a34)}
-.orb{position:absolute;border-radius:50%;filter:blur(50px);background:rgba(255,255,255,.28);animation:fl 9s ease-in-out infinite}
+.orb{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.3),rgba(255,255,255,0) 70%);animation:fl 9s ease-in-out infinite}
 .o1{width:260px;height:260px;top:14%;left:6%}.o2{width:220px;height:220px;bottom:10%;right:8%;animation-delay:-4s}
 @keyframes fl{50%{transform:translate(28px,-36px) scale(1.15)}}
 .tag{font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;opacity:.9;position:relative}
@@ -65,36 +65,36 @@ input:focus{outline:2px solid var(--r)}
 .err{color:#c0392b;margin-top:10px;font-size:.9rem}.note{font-size:.78rem;color:var(--mute);text-align:center;margin:16px 0 0}
 footer{text-align:center;padding:50px 5vw 60px;color:#fff;background:linear-gradient(160deg,#14503a,#0a2e22)}
 footer h3{font-size:1.6rem;margin-bottom:6px}footer a{color:#fff;font-weight:600}
-.rv{opacity:0;transform:translateY(34px);filter:blur(6px);transition:all .9s cubic-bezier(.2,.7,.2,1)}.rv.in{opacity:1;transform:none;filter:none}
+.rv{opacity:0;transform:translate3d(0,18px,0);transition:opacity .35s ease-out,transform .35s ease-out;will-change:opacity,transform}.rv.in{opacity:1;transform:none}
 @media(max-width:640px){nav div a{display:none}.story{grid-template-columns:1fr;text-align:center}.btn.o{margin:12px 0 0}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none;filter:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 
-#pre{position:fixed;inset:0;z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;background:radial-gradient(60% 60% at 50% 40%,#1b6b4f,#06301f);color:#fff;transition:transform .7s cubic-bezier(.77,0,.18,1),opacity .4s .35s;animation:preOut .6s 2.2s forwards}
+#pre{position:fixed;inset:0;z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;background:radial-gradient(60% 60% at 50% 40%,#1b6b4f,#06301f);color:#fff;transition:transform .4s cubic-bezier(.77,0,.18,1),opacity .3s .15s;animation:preOut .4s 1.8s forwards}
 #pre.go{transform:translateY(-100%);opacity:0;pointer-events:none}
 @keyframes preOut{to{transform:translateY(-100%);opacity:0;pointer-events:none;visibility:hidden}}
 #pre .pn{font-family:'Playfair Display',serif;font-size:clamp(2rem,7vw,3.4rem);font-weight:700;letter-spacing:.02em;display:flex}
-#pre .pn span{display:inline-block;opacity:0;transform:translateY(24px);animation:lt .5s cubic-bezier(.2,.7,.2,1) forwards}
+#pre .pn span{display:inline-block;opacity:0;transform:translateY(24px);animation:lt .4s cubic-bezier(.2,.7,.2,1) forwards}
 @keyframes lt{to{opacity:1;transform:none}}
-#pre .ps{font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:#f5c04a;opacity:0;animation:lt .5s .5s forwards}
+#pre .ps{font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:#f5c04a;opacity:0;animation:lt .4s .4s forwards}
 #pre .pb{width:min(220px,50vw);height:3px;border-radius:9px;background:rgba(255,255,255,.2);overflow:hidden}
-#pre .pb i{display:block;height:100%;width:0;background:linear-gradient(90deg,#f5c04a,#fff);animation:pf 1s .1s cubic-bezier(.6,.1,.2,1) forwards}
+#pre .pb i{display:block;height:100%;width:0;background:linear-gradient(90deg,#f5c04a,#fff);animation:pf .8s .1s cubic-bezier(.6,.1,.2,1) forwards}
 @keyframes pf{to{width:100%}}
 body.ld{overflow:hidden}
 #sp{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,#f5c04a,#1b6b4f);z-index:10}
-.hero .rv{transition-duration:1.1s}
-.tilt{transition:transform .25s ease-out,opacity .9s,filter .9s,box-shadow .3s;will-change:transform}
+.hero .rv{transition-duration:.4s}
+.tilt{transition:transform .2s ease-out,opacity .35s ease-out,box-shadow .3s;will-change:transform}
 .btn:active{transform:scale(.96)}
 @media(prefers-reduced-motion:reduce){#pre{animation-duration:.01s;animation-delay:.2s}}
 
 .burger{margin-left:16px;width:44px;height:44px;border-radius:50%;border:0;cursor:pointer;background:var(--r);display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;vertical-align:middle;transition:background .3s,transform .3s}
 .burger:hover{background:var(--r2);transform:scale(1.06)}
-.burger i{display:block;width:20px;height:2px;border-radius:2px;background:#fff;transition:transform .45s cubic-bezier(.7,0,.2,1),opacity .25s,width .3s}
+.burger i{display:block;width:20px;height:2px;border-radius:2px;background:#fff;transition:transform .4s cubic-bezier(.7,0,.2,1),opacity .25s,width .3s}
 .burger i:nth-child(2){width:14px;align-self:flex-end;margin-right:12px}
 .burger.x i:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .burger.x i:nth-child(2){opacity:0;transform:scaleX(0)}
 .burger.x i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .burger.x{background:#f5c04a}.burger.x i{background:#3a2a00}
-.mp{position:fixed;z-index:8;top:calc(78px + env(safe-area-inset-top,0px));left:50%;width:min(94vw,360px);margin-left:calc(min(94vw,860px)/2 - min(94vw,360px)/2);transform:translateX(-50%) translateY(-14px) scale(.96);transform-origin:top right;opacity:0;visibility:hidden;padding:12px;display:flex;flex-direction:column;background:rgba(255,255,255,.82);transition:opacity .35s,transform .45s cubic-bezier(.2,.8,.2,1),visibility 0s .45s}
+.mp{position:fixed;z-index:8;top:calc(78px + env(safe-area-inset-top,0px));left:50%;width:min(94vw,360px);margin-left:calc(min(94vw,860px)/2 - min(94vw,360px)/2);transform:translateX(-50%) translateY(-14px) scale(.96);transform-origin:top right;opacity:0;visibility:hidden;padding:12px;display:flex;flex-direction:column;background:rgba(255,255,255,.82);transition:opacity .35s,transform .4s cubic-bezier(.2,.8,.2,1),visibility 0s .4s}
 .mp.open{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0) scale(1);transition-delay:0s}
 .mp a{color:var(--ink);text-decoration:none;padding:14px 18px;border-radius:16px;font-weight:500;opacity:0;transform:translateX(16px);transition:opacity .4s,transform .4s,background .2s}
 .mp.open a{opacity:1;transform:none}
@@ -122,8 +122,6 @@ body.ld{overflow:hidden}
   <p class="rv">Fresh, home-style lunch and dinner, delivered to your hostel or PG every day.</p>
   <div class="glass offer rv"><span>2 Meals</span><b>₹90</b><span>lunch + dinner</span></div>
   <div class="rv"><a class="btn" href="#order">Order on WhatsApp</a><a class="btn o" href="#menu">See the menu</a></div>
-  <div class="chips rv"><span>Lunch orders till 9 AM</span><span>Dinner orders till 4 PM</span><span>₹1,500 monthly advance</span></div>
-  <div class="tag rv" style="margin-top:26px;letter-spacing:.12em">Lunch orders till 9 AM · Dinner orders till 4 PM · ₹1,500 advance at start</div>
 </header>
 
 <section>
@@ -156,11 +154,6 @@ body.ld{overflow:hidden}
 <section id="order">
   <h2 class="rv">Order via your <span>area's WhatsApp group</span></h2>
   <p class="sub rv">Join your area's group and place your order there before the cut-off time.</p>
-  <div class="rules">
-    <div class="glass rule rv"><small>LUNCH</small><b>9 AM</b><span>Last time to order or update</span></div>
-    <div class="glass rule rv"><small>DINNER</small><b>4 PM</b><span>Last time to order or update</span></div>
-    <div class="glass rule rv"><small>START-UP ADVANCE</small><b>₹1,500</b><span>One-time advance when you begin</span></div>
-  </div>
   <div class="areas" id="areas"></div>
 </section>
 
@@ -194,7 +187,9 @@ const AREAS = [ // replace names and links with real WhatsApp group invites
 const DAYS=["MON","TUE","WED","THU","FRI","SAT","SUN"];
 const LUNCH=["Rice, Dal, Mix veg ghanta, Papad","Rice, Dal, Bhaja, Dahi baingana","Jeera rice, Egg / Mushroom curry, Dahi bundi","Rice, Dal, Besara, Lia badhi","Pulao, Gravy, Salad","Rice, Dalma, Aloo bharta, Papad","Rice, Dal, Fish / Mushroom besara"];
 const DINNER=["Veg biryani, Raita","Rice / Roti, Aloo matar curry","Rice / Roti, Chana masala","Rice / Roti, Khurma","Rice / Roti, Chicken / Paneer masala","Rice / Roti, Soya aloo curry","Roti, Egg / Veg tadka, Meetha"];
-const DELIVERED = {}; // real bills load here from your database
+const DELIVERED = { // [daysAgo, meals]; real bills load here from your database
+ "9999999999":{name:"Demo Customer",adv:1500,log:[[8,1],[7,2],[6,1],[4,1],[3,2],[1,1],[0,1]]}
+};
 // =====================
 const $=id=>document.getElementById(id), inr=n=>'₹'+n.toLocaleString('en-IN');
 const t=(new Date().getDay()+6)%7;
@@ -212,18 +207,17 @@ function show(){
   $('out').style.display='block';
 }
 $('go').onclick=show;$('ph').addEventListener('keydown',e=>{if(e.key==='Enter')show()});
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const t=e.target;t.classList.add('in');io.unobserve(t);setTimeout(()=>{t.style.transitionDelay='0s'},1400)}}),{threshold:.1});
-document.querySelectorAll('.rv').forEach((e,i)=>{e.style.transitionDelay=(i%4)*90+'ms'});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const t=e.target;t.classList.add('in');io.unobserve(t);t.style.willChange='auto'}}),{threshold:0,rootMargin:'0px 0px 12% 0px'});
 // Preloader runs on every visit
-const pn=$('pn');"Lony's Kitchen".split('').forEach((ch,i)=>{const s=document.createElement('span');s.textContent=ch===' '?'\u00A0':ch;s.style.animationDelay=(.05+i*.035)+'s';pn.appendChild(s)});
+const pn=$('pn');"Lony's Kitchen".split('').forEach((ch,i)=>{const s=document.createElement('span');s.textContent=ch===' '?'\u00A0':ch;s.style.animationDelay=(.03+i*.03)+'s';pn.appendChild(s)});
 let started=false;
 function start(){if(started)return;started=true;document.body.classList.remove('ld');document.querySelectorAll('.rv').forEach(e=>io.observe(e));countUp()}
-setTimeout(()=>{$('pre').classList.add('go');setTimeout(start,250)},1400);
-setTimeout(start,2800);
+setTimeout(()=>{$('pre').classList.add('go');setTimeout(start,250)},1000);
+setTimeout(start,2200);
 // Count-up for 250+
 function countUp(){const el=$('cnt'),to=250;const o=new IntersectionObserver(([e])=>{if(!e.isIntersecting)return;o.disconnect();const t0=performance.now();(function f(t){const p=Math.min((t-t0)/1600,1);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(t0)},{threshold:.5});el.textContent=0;o.observe(el)}
 // Scroll progress
-const sp=$('sp');addEventListener('scroll',()=>{const h=document.documentElement;sp.style.transform=`scaleX(${h.scrollTop/(h.scrollHeight-h.clientHeight||1)})`},{passive:true});
+const sp=$('sp');let tk=false;addEventListener('scroll',()=>{if(tk)return;tk=true;requestAnimationFrame(()=>{const h=document.documentElement;sp.style.transform=`scaleX(${h.scrollTop/(h.scrollHeight-h.clientHeight||1)})`;tk=false})},{passive:true});
 // Card tilt (mouse devices only)
 if(matchMedia('(hover:hover) and (pointer:fine)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
   document.querySelectorAll('.mc,.area,.rule,.story').forEach(c=>{c.classList.add('tilt');
