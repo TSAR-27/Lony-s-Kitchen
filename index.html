@@ -77,7 +77,7 @@ footer h3{font-size:1.6rem;margin-bottom:6px}footer a{color:#fff;font-weight:600
 @keyframes lt{to{opacity:1;transform:none}}
 #pre .ps{font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:#f5c04a;opacity:0;animation:lt .4s .4s forwards}
 #pre .pb{width:min(220px,50vw);height:3px;border-radius:9px;background:rgba(255,255,255,.2);overflow:hidden}
-#pre .pb i{display:block;height:100%;width:0;background:linear-gradient(90deg,#f5c04a,#fff);animation:pf .8s .1s cubic-bezier(.6,.1,.2,1) forwards}
+#pre .pb i{display:block;height:100%;width:0;background:linear-gradient(90deg,#f5c04a,#fff);animation:pf 1s .1s cubic-bezier(.6,.1,.2,1) forwards}
 @keyframes pf{to{width:100%}}
 body.ld{overflow:hidden}
 #sp{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,#f5c04a,#1b6b4f);z-index:10}
@@ -176,6 +176,12 @@ body.ld{overflow:hidden}
 </footer>
 
 <script>
+// Always open at the top, never at the last scroll position
+try{history.scrollRestoration='manual'}catch(e){}
+try{if(location.hash)history.replaceState(null,'',location.pathname+location.search)}catch(e){}
+const toTop=()=>window.scrollTo(0,0);toTop();
+addEventListener('load',()=>{toTop();setTimeout(toTop,60)});
+addEventListener('pageshow',e=>{if(e.persisted)toTop()});
 // ===== EDIT HERE =====
 const PER_MEAL = 45; // 2 meals = ₹90
 const AREAS = [ // replace names and links with real WhatsApp group invites
@@ -212,7 +218,7 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const 
 const pn=$('pn');"Lony's Kitchen".split('').forEach((ch,i)=>{const s=document.createElement('span');s.textContent=ch===' '?'\u00A0':ch;s.style.animationDelay=(.03+i*.03)+'s';pn.appendChild(s)});
 let started=false;
 function start(){if(started)return;started=true;document.body.classList.remove('ld');document.querySelectorAll('.rv').forEach(e=>io.observe(e));countUp()}
-setTimeout(()=>{$('pre').classList.add('go');setTimeout(start,250)},1000);
+setTimeout(()=>{$('pre').classList.add('go');setTimeout(start,250)},1100);
 setTimeout(start,2200);
 // Count-up for 250+
 function countUp(){const el=$('cnt'),to=250;const o=new IntersectionObserver(([e])=>{if(!e.isIntersecting)return;o.disconnect();const t0=performance.now();(function f(t){const p=Math.min((t-t0)/1600,1);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(t0)},{threshold:.5});el.textContent=0;o.observe(el)}
